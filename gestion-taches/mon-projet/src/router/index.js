@@ -10,9 +10,11 @@ import AddTask from "../views/AddTask.vue";
 import Login from "../views/Login.vue";
 import ProfileView from "../views/ProfileView.vue";
 import Register from "../views/Register.vue"; 
+import Home from "../views/Home.vue";
 import ProfileDashboard from "../views/ProfileDashboard.vue";
 const routes = [
-  { path: "/", redirect: "/dashboard" },
+  { path: '/', component: Home },
+ 
   { path: "/dashboard", component: Dashboard },
   { path: "/projects", component: Projects },
   { path: "/profile/view", component: ProfileView, meta: { requiresAuth: true } },

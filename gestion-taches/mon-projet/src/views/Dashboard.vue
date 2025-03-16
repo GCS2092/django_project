@@ -137,20 +137,73 @@ onMounted(fetchData);
 </template>
 
 <style scoped>
-/* Style des boutons */
+/* Variables globales */
+:root {
+  /* Couleurs */
+  --primary-color: #4361ee;
+  --success-color: #2ecc71;
+  --warning-color: #f39c12;
+  --neutral-color: #6c757d;
+  --light-color: #ffffff;
+  --border-color: #e2e8f0;
+  --bg-light: #f8f9fa;
+  
+  /* Espacements */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.2rem;
+  --spacing-xl: 1.5rem;
+  --spacing-xxl: 2rem;
+  
+  /* Bordures et ombres */
+  --border-radius: 8px;
+  --box-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --box-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  /* Typographie */
+  --font-size-sm: 0.85rem;
+  --font-size-base: 0.95rem;
+  --font-weight-medium: 500;
+}
+
+/* Base */
+.dashboard {
+  padding: var(--spacing-lg);
+}
+
+.dashboard h1 {
+  margin-bottom: var(--spacing-xl);
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+/* Barre d'actions */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Boutons */
 .btn {
   display: inline-flex;
   align-items: center;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  font-weight: 500;
+  padding: var(--spacing-xs) var(--spacing-lg);
+  border-radius: var(--border-radius);
+  font-weight: var(--font-weight-medium);
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  background-color: #4361ee;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--light-color);
   border: none;
-  font-size: 0.95rem;
+  font-size: var(--font-size-base);
 }
 
 .btn:hover {
@@ -159,77 +212,114 @@ onMounted(fetchData);
 }
 
 .btn-secondary {
-  background-color: #2ecc71;
+  background-color: var(--success-color);
 }
 
 .btn-profile {
-  background-color: white;
+  background-color: var(--light-color);
   color: #2d3748;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
 }
 
 .btn-profile:hover {
-  background-color: #f8f9fa;
+  background-color: var(--bg-light);
 }
 
-/* Stats */
+/* État de chargement */
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-xl);
+  font-style: italic;
+}
+
+/* Statistiques */
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xxl);
 }
 
 .stats p {
-  background-color: white;
-  padding: 1.2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--light-color);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-md);
   text-align: center;
 }
 
-/* Filtrage des tâches */
+/* Section des tâches */
+.task-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Filtre */
 .filter-container select {
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #e2e8f0;
-  background-color: white;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background-color: var(--light-color);
   width: 100%;
   max-width: 300px;
-  font-size: 0.95rem;
+  font-size: var(--font-size-base);
 }
 
 /* Liste des tâches */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .task-list li {
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 0.75rem;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border-left: 4px solid #e2e8f0;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-sm);
+  background-color: var(--light-color);
+  box-shadow: var(--box-shadow-sm);
+  border-left: 4px solid var(--border-color);
 }
 
 .task-title {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }
 
 .task-status {
-  font-size: 0.85rem;
-  color: #6c757d;
-  margin-top: 0.5rem;
+  font-size: var(--font-size-sm);
+  color: var(--neutral-color);
+  margin-top: var(--spacing-xs);
 }
 
-/* Tâches selon leur statut */
+/* Indicateurs de statut pour les tâches */
 li[data-status="todo"] {
-  border-left-color: #6c757d;
+  border-left-color: var(--neutral-color);
 }
 
 li[data-status="in_progress"] {
-  border-left-color: #f39c12;
+  border-left-color: var(--warning-color);
 }
 
 li[data-status="done"] {
-  border-left-color: #2ecc71;
+  border-left-color: var(--success-color);
+}
+
+/* Message vide */
+.no-tasks {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--neutral-color);
+  font-style: italic;
+}
+
+/* Boutons d'action en bas */
+.action-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-lg);
 }
 
 /* Responsive */
@@ -245,6 +335,10 @@ li[data-status="done"] {
   
   .stats {
     grid-template-columns: 1fr;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
   }
 }
 </style>
