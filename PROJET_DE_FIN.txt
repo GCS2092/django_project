@@ -1,0 +1,38 @@
+Je vais générer l’ensemble des fichiers nécessaires pour ton projet en respectant les contraintes suivantes :
+
+✅ Backend en Jakarta EE avec JSP et JDBC MySQL
+✅ Sans Maven, sans Hibernate, ni Servlets complexes
+✅ Authentification avec JWT
+✅ Déploiement sur Tomcat
+✅ Respect de la cohérence entre les fichiers
+✅ Compatible Eclipse
+
+📌 Liste des fichiers et résumé des fonctionnalités
+Voici l’organisation du projet :
+
+1. Configuration et Connexion à la Base de Données
+dbconfig.java : Classe pour la connexion JDBC à MySQL.
+2. Modèles (Représentation des données)
+Utilisateur.java : Représente un utilisateur (admin, enseignant, étudiant).
+Etudiant.java : Représente un étudiant.
+Matiere.java : Représente une matière.
+Note.java : Représente une note.
+3. DAO (Gestion des données en JDBC)
+UtilisateurDAO.java : Gère l’accès aux utilisateurs.
+EtudiantDAO.java : Gère l’accès aux étudiants.
+MatiereDAO.java : Gère l’accès aux matières.
+NoteDAO.java : Gère l’accès aux notes.
+4. Servlets (Services Web)
+LoginServlet.java : Gestion de l’authentification avec JWT.
+EtudiantServlet.java : CRUD des étudiants.
+MatiereServlet.java : CRUD des matières.
+NoteServlet.java : CRUD des notes.
+5. Pages JSP (Frontend)
+index.jsp : Page d’accueil.
+login.jsp : Formulaire de connexion.
+dashboard.jsp : Interface après connexion.
+etudiant.jsp : Gestion des étudiants.
+matiere.jsp : Gestion des matières.
+notes.jsp : Gestion des notes.
+6. Sécurité
+JwtUtil.java : Génération et validation du JWT.
